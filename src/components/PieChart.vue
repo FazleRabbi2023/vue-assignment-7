@@ -47,11 +47,9 @@ onBeforeMount(() => {
 onMounted(() => {
   // Get a reference to the canvas element
   const pieCtx = document.getElementById('myPieChart').getContext('2d');
-  const doughnutCtx = document.getElementById('myDoughnutChart').getContext('2d');
 
   // Create the pie chart
   pieChart = new Chart(pieCtx, pieConfig);
-  doughnutChart = new Chart(doughnutCtx, doughnutConfig);
 })
 
 onBeforeUnmount(() => {
@@ -68,26 +66,21 @@ function updateChart(){
   data.datasets[0].backgroundColor.push(colorName.value.toLowerCase())
 
   pieChart.update()
-  doughnutChart.update()
 }
 </script>
 
 <template>
-  <div class="container mx-auto">
-    <div class="grid grid-cols-2 gap-6 container mx-auto">
-    <div class="w-2/3">
-      <h1 class="md:text-3xl text-base text-gray-900 text-center">Pie Chart</h1>
-      <canvas id="myPieChart"></canvas>
+  <div class="">
+    <div class="flex justify-center">
+      <div class="w-1/3">
+        <h1 class="md:text-3xl text-base text-gray-900 text-center">Pie Chart</h1>
+        <canvas id="myPieChart"></canvas>
+      </div>
     </div>
-    <div class="w-2/3">
-      <h1 class="md:text-3xl text-base text-gray-900 text-center">Doughnut Chart</h1>
-      <canvas id="myDoughnutChart"></canvas>
-    </div>
-  </div>
 
 
   <form>
-    <div class="grid gap-6 mb-6 md:grid-cols-3 my-4">
+    <div class="grid gap-6 mb-6 md:grid-cols-3 my-4 max-w-lg container mx-auto">
       <div>
           <input v-model="colorName" type="text" id="color-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required placeholder="Color Name">
       </div>
